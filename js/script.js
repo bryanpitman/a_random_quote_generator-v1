@@ -8,7 +8,11 @@ project 1 - A Random Quote Generator
 // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
 
 /*** 
- * `quotes` array 
+ * created an array of 5 objects to store movie quotes
+ * Quote: movie quote
+    Source: Movie character
+    Citation: Name of the movie
+    Year: Year movie released
 ***/
 let quotes = [
   {
@@ -43,22 +47,37 @@ let quotes = [
   }
 ]
 
-
-
-
-
-
 /***
- * `getRandomQuote` function
+ * getRandomQuote function returns a random number between 0 - 4
 ***/
-
-
+function getRandomQuote() {
+  let randomNum = Math.floor(Math.random() * 5);
+  console.log(randomNum); 
+  return randomNum;
+  
+}
+console.log(quotes[getRandomQuote()]); 
 
 /***
  * `printQuote` function
 ***/
 
+function printQuote() {
+  let randomObj = quotes[getRandomQuote()];
+  let htmlVar = `<p class="quote"> ${randomObj.Quote} </p><p class="source"> ${randomObj.Source} </p>`;
 
+
+if(typeof(randomObj.Citation) === String) {
+  htmlVar += `<span class="citation"> ${randomObj.Citation} </span>`
+}
+if(typeof(randomObj.Year) !== Number) {
+  htmlVar += `<span class="year"> ${randomObj.Year} </span>` 
+} 
+  console.log(htmlVar);
+  return htmlVar;
+}
+
+document.getElementById('quote-box').innerHTML = printQuote();
 
 /***
  * click event listener for the print quote button
