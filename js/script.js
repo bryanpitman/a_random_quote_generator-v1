@@ -67,10 +67,10 @@ function printQuote() {
   let htmlVar = `<p class="quote"> ${randomObj.Quote} </p><p class="source"> ${randomObj.Source} `;
 
 
-if(typeof(randomObj.Citation) === String) {
+if(typeof(randomObj.Citation) === "string") {
   htmlVar += `<span class="citation"> ${randomObj.Citation} </span>`
 }
-if(typeof(randomObj.Year) !== Number) {
+if(typeof(randomObj.Year) === "number") {
   htmlVar += `<span class="year"> ${randomObj.Year} </span></p>` 
 } 
   document.getElementById('quote-box').innerHTML = htmlVar; // connected the get quotes button on the webpage
