@@ -59,25 +59,25 @@ function getRandomQuote() {
 console.log(quotes[getRandomQuote()]); 
 
 /***
- * `printQuote` function
+ * printQuote function contains the appended HTML string and calls the randomQuote function above
 ***/
 
 function printQuote() {
   let randomObj = quotes[getRandomQuote()];
-  let htmlVar = `<p class="quote"> ${randomObj.Quote} </p><p class="source"> ${randomObj.Source} </p>`;
+  let htmlVar = `<p class="quote"> ${randomObj.Quote} </p><p class="source"> ${randomObj.Source} `;
 
 
 if(typeof(randomObj.Citation) === String) {
   htmlVar += `<span class="citation"> ${randomObj.Citation} </span>`
 }
 if(typeof(randomObj.Year) !== Number) {
-  htmlVar += `<span class="year"> ${randomObj.Year} </span>` 
+  htmlVar += `<span class="year"> ${randomObj.Year} </span></p>` 
 } 
-  console.log(htmlVar);
+  document.getElementById('quote-box').innerHTML = htmlVar; // connected the get quotes button on the webpage
   return htmlVar;
 }
 
-document.getElementById('quote-box').innerHTML = printQuote();
+
 
 /***
  * click event listener for the print quote button
