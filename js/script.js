@@ -16,63 +16,64 @@ project 1 - A Random Quote Generator
 ***/
 let quotes = [
   {
-    Quote: 'Alright everyone chill',
-    Source: 'Mr. Freeze',
-    Citation: "Batman and Robin",
-    Year: 1997
+    quote: 'Alright everyone chill',
+    source: 'Mr. Freeze',
+    citation: "Batman and Robin",
+    year: 1997
   },
   {
-    Quote: 'Apes together strong',
-    Source: 'Caesar',
-    Citation: 'Rise of the Planet of the Apes',
-    Year: 2011
+    quote: 'Apes together strong',
+    source: 'Caesar',
+    citation: 'Rise of the Planet of the Apes',
+    year: 2011
   },
   {
-    Quote: 'I am Groot',
-    Source: 'Groot',
-    Citation: 'Guardians of the Galaxy',
-    Year: 2014
+    quote: 'I am Groot',
+    source: 'Groot',
+    citation: 'Guardians of the Galaxy',
+    year: 2014
   },
   {
-    Quote: 'There is no spoon',
-    Source: 'Young Monk',
-    Citation: 'The Matrix',
-    Year: 1999
+    quote: 'There is no spoon',
+    source: 'Young Monk',
+    citation: 'The Matrix',
+    year: 1999
   },
   {
-    Quote: 'Why so serious?',
-    Source: 'Joker',
-    Citation: 'The Dark Knight',
-    Year: 2008
+    quote: 'Why so serious?',
+    source: 'Joker',
+    citation: 'The Dark Knight',
+    year: 2008
   }
 ]
 
 /***
- * getRandomQuote function returns a random number between 0 - 4
+* getRandomQuote function returns a random quote in the array. 
 ***/
 function getRandomQuote() {
-  let randomNum = Math.floor(Math.random() * 5);
-  console.log(randomNum); 
-  return randomNum;
-  
+  let randomNum = Math.floor(Math.random() * quotes.length);
+  console.log(randomNum);
+  return quotes[randomNum];
+
+
 }
-console.log(quotes[getRandomQuote()]); 
+console.log(quotes[getRandomQuote()]);
 
 /***
  * printQuote function contains the appended HTML string and calls the randomQuote function above
 ***/
 
 function printQuote() {
-  let randomObj = quotes[getRandomQuote()];
-  let htmlVar = `<p class="quote"> ${randomObj.Quote} </p><p class="source"> ${randomObj.Source} `;
+  let randomObj = getRandomQuote();
+  let htmlVar = `<p class="quote"> ${randomObj.quote} </p><p class="source"> ${randomObj.source} `;
 
 
-if(typeof(randomObj.Citation) === "string") {
-  htmlVar += `<span class="citation"> ${randomObj.Citation} </span>`
-}
-if(typeof(randomObj.Year) === "number") {
-  htmlVar += `<span class="year"> ${randomObj.Year} </span></p>` 
-} 
+  if (typeof (randomObj.citation) === "string") {
+    htmlVar += `<span class="citation"> ${randomObj.citation} </span>`
+  }
+  if (typeof (randomObj.year) === "number") {
+    htmlVar += `<span class="year"> ${randomObj.year} </span></p>`
+  }
   document.getElementById('quote-box').innerHTML = htmlVar; // connected the get quotes button on the webpage
   return htmlVar;
 }
